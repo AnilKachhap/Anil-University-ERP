@@ -157,28 +157,26 @@ Update-Database
 
 
 5\. Run the application.
-## Home Page 
-![Home](Screenshots/UserHome.png)
-## Dashboard
+## Home Page
+![Home](wwwroot/Screenshots/UserHome.png)
 
-![Dashboard](Screenshots/Dashboard.png)
+## Dashboard
+![Dashboard](wwwroot/Screenshots/Dashboard.png)
 
 ## Student Management
-
-![Students](Screenshots/studentsdashboard.png)
+![Students](wwwroot/Screenshots/studentsdashboard.png)
 
 ## Course Management
-![Courses](Screenshots/CoursesUI.png)
+![Courses](wwwroot/Screenshots/CoursesUI.png)
 
 ## Attendance Management
-![Attendance](Screenshots/studentattendance.png)
+![Attendance](wwwroot/Screenshots/studentattendance.png)
 
 ## Payment Management
+![Payment](wwwroot/Screenshots/paymentreceipt.png)
 
-![Payment](Screenshots/paymentreceipt.png)
 ## Login
-
-![Login](Screenshots/loginUI.png)
+![Login](wwwroot/Screenshots/loginUI.png)
 
 \## 👨‍💻 Developer
 
