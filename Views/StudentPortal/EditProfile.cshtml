@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+@model AnilUniversity.Models.Student
+
+<h2>Edit Profile</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<form asp-action="EditProfile" method="post">
+
+    <input type="hidden" asp-for="StudentId" />
+
+    <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input asp-for="FullName" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Mobile</label>
+        <input asp-for="Mobile" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Address</label>
+        <textarea asp-for="Address" class="form-control" rows="4"></textarea>
+    </div>
+
+    <button class="btn btn-primary">
+        Update Profile
+    </button>
+
+    <a asp-action="MyProfile" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>

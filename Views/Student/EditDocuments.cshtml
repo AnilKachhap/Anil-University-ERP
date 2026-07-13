@@ -1,0 +1,186 @@
+﻿@model AnilUniversity.ViewModels.EditDocumentViewModel
+
+@{
+    ViewData["Title"] = "Edit Documents";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3>Edit Student Documents</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="EditDocuments"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="StudentId" />
+                <input type="hidden" asp-for="StudentDocumentId" />
+
+                <div class="row">
+
+                    <!-- Photo -->
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Current Photo
+                        </label>
+                        <br />
+
+                        @if (!string.IsNullOrEmpty(Model.PhotoPath))
+                        {
+                            <img src="@Url.Content(Model.PhotoPath)"
+                                 width="180"
+                                 class="img-thumbnail mb-2" />
+                        }
+
+                        <input asp-for="Photo"
+                               type="file"
+                               class="form-control" />
+
+                    </div>
+
+                    <!-- Signature -->
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Current Signature
+                        </label>
+                        <br />
+
+                        @if (!string.IsNullOrEmpty(Model.SignaturePath))
+                        {
+                            <img src="@Url.Content(Model.SignaturePath)"
+                                 width="180"
+                                 class="img-thumbnail mb-2" />
+                        }
+
+                        <input asp-for="Signature"
+                               type="file"
+                               class="form-control" />
+
+                    </div>
+
+                    <!-- Aadhaar -->
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Aadhaar
+                        </label>
+                        <br />
+
+                        @if (!string.IsNullOrEmpty(Model.AadhaarPath))
+                        {
+                            <a href="@Url.Content(Model.AadhaarPath)"
+                               target="_blank"
+                               class="btn btn-info btn-sm mb-2">
+                                View Aadhaar
+                            </a>
+                        }
+
+                        <input asp-for="Aadhaar"
+                               type="file"
+                               class="form-control" />
+
+                    </div>
+
+                    <!-- 10th -->
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            10th Marksheet
+                        </label>
+                        <br />
+
+                        @if (!string.IsNullOrEmpty(Model.TenthMarksheetPath))
+                        {
+                            <a href="@Url.Content(Model.TenthMarksheetPath)"
+                               target="_blank"
+                               class="btn btn-success btn-sm mb-2">
+                                View 10th
+                            </a>
+                        }
+
+                        <input asp-for="TenthMarksheet"
+                               type="file"
+                               class="form-control" />
+
+                    </div>
+
+                    <!-- 12th -->
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            12th Marksheet
+                        </label>
+                        <br />
+
+                        @if (!string.IsNullOrEmpty(Model.TwelfthMarksheetPath))
+                        {
+                            <a href="@Url.Content(Model.TwelfthMarksheetPath)"
+                               target="_blank"
+                               class="btn btn-success btn-sm mb-2">
+                                View 12th
+                            </a>
+                        }
+
+                        <input asp-for="TwelfthMarksheet"
+                               type="file"
+                               class="form-control" />
+
+                    </div>
+
+                    <!-- Graduation -->
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Graduation Marksheet
+                        </label>
+                        <br />
+
+                        @if (!string.IsNullOrEmpty(Model.GraduationMarksheetPath))
+                        {
+                            <a href="@Url.Content(Model.GraduationMarksheetPath)"
+                               target="_blank"
+                               class="btn btn-success btn-sm mb-2">
+                                View Graduation
+                            </a>
+                        }
+
+                        <input asp-for="GraduationMarksheet"
+                               type="file"
+                               class="form-control" />
+
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <button type="submit"
+                        class="btn btn-success">
+                    Update Documents
+                </button>
+
+                <a asp-action="Details"
+                   asp-route-id="@Model.StudentId"
+                   class="btn btn-secondary">
+                    Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

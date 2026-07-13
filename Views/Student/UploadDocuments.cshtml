@@ -1,0 +1,277 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model AnilUniversity.ViewModels.StudentDocumentViewModel
+
+@{
+    ViewData["Title"] = "Upload Documents";
+}
+
+
+<div class="container mt-5 mb-5">
+
+
+    <div class="row justify-content-center">
+
+
+        <div class="col-lg-8">
+
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+
+                <div class="card-header bg-primary text-white text-center rounded-top-4 py-4">
+
+
+                    <h2 class="fw-bold mb-1">
+                        📄 Upload Documents
+                    </h2>
+
+
+                    <p class="mb-0">
+                        Submit required documents for admission verification
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="card-body p-4">
+
+
+                    <form asp-action="UploadDocuments"
+                          method="post"
+                          enctype="multipart/form-data">
+
+
+                        <input asp-for="StudentId" hidden />
+
+
+
+                        <div class="alert alert-info">
+
+                            <strong>Note:</strong>
+                            Upload clear PDF/JPG/PNG files only.
+
+                        </div>
+
+
+
+
+
+                        <div class="row">
+
+
+
+                            <div class="col-md-6 mb-4">
+
+
+                                <div class="document-box">
+
+
+                                    <label class="form-label fw-bold">
+                                        📸 Passport Photo
+                                    </label>
+
+
+                                    <input asp-for="Photo"
+                                           type="file"
+                                           class="form-control" />
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="col-md-6 mb-4">
+
+
+                                <div class="document-box">
+
+
+                                    <label class="form-label fw-bold">
+                                        ✍ Signature
+                                    </label>
+
+
+                                    <input asp-for="Signature"
+                                           type="file"
+                                           class="form-control" />
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+
+                            <div class="col-md-6 mb-4">
+
+
+                                <div class="document-box">
+
+
+                                    <label class="form-label fw-bold">
+                                        🪪 Aadhaar Card
+                                    </label>
+
+
+                                    <input asp-for="Aadhaar"
+                                           type="file"
+                                           class="form-control" />
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="col-md-6 mb-4">
+
+
+                                <div class="document-box">
+
+
+                                    <label class="form-label fw-bold">
+                                        📜 10th Marksheet
+                                    </label>
+
+
+                                    <input asp-for="TenthMarksheet"
+                                           type="file"
+                                           class="form-control" />
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+
+                            <div class="col-md-6 mb-4">
+
+
+                                <div class="document-box">
+
+
+                                    <label class="form-label fw-bold">
+                                        📜 12th Marksheet
+                                    </label>
+
+
+                                    <input asp-for="TwelfthMarksheet"
+                                           type="file"
+                                           class="form-control" />
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="col-md-6 mb-4">
+
+
+                                <div class="document-box">
+
+
+                                    <label class="form-label fw-bold">
+                                        🎓 Graduation Marksheet
+                                    </label>
+
+
+                                    <input asp-for="GraduationMarksheet"
+                                           type="file"
+                                           class="form-control" />
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="text-center mt-3">
+
+
+                            <button type="submit"
+                                    class="btn btn-success btn-lg px-5 shadow">
+
+                                ⬆ Upload Documents
+
+                            </button>
+
+
+                        </div>
+
+
+
+
+                    </form>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<style>
+
+    .document-box {
+        padding: 20px;
+        border-radius: 15px;
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+        transition: 0.3s;
+    }
+
+
+        .document-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+</style>

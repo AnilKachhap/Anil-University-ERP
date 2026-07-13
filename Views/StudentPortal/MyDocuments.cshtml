@@ -1,0 +1,225 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+@model AnilUniversity.Models.StudentDocument
+
+@{
+    ViewData["Title"] = "My Documents";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4 text-center">My Documents</h2>
+
+    @if (Model == null)
+    {
+        <div class="alert alert-warning text-center">
+            No Documents Uploaded.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+
+            <!-- Photo -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-primary text-white text-center">
+                        Student Photo
+                    </div>
+
+                    <div class="card-body text-center">
+
+                        <img src="@Model.PhotoPath"
+                             class="img-thumbnail"
+                             style="height:180px;" />
+
+                        <hr />
+
+                        <a href="@Model.PhotoPath"
+                           target="_blank"
+                           class="btn btn-primary btn-sm">
+                            View
+                        </a>
+
+                        <a href="@Model.PhotoPath"
+                           download
+                           class="btn btn-success btn-sm">
+                            Download
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Signature -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-success text-white text-center">
+                        Signature
+                    </div>
+
+                    <div class="card-body text-center">
+
+                        <img src="@Model.SignaturePath"
+                             style="height:100px;" />
+
+                        <hr />
+
+                        <a href="@Model.SignaturePath"
+                           target="_blank"
+                           class="btn btn-primary btn-sm">
+                            View
+                        </a>
+
+                        <a href="@Model.SignaturePath"
+                           download
+                           class="btn btn-success btn-sm">
+                            Download
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Aadhaar -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-dark text-white text-center">
+                        Aadhaar Card
+                    </div>
+
+                    <div class="card-body text-center">
+
+                        <i class="fa fa-id-card fa-4x text-primary"></i>
+
+                        <hr />
+
+                        <a href="@Model.AadhaarPath"
+                           target="_blank"
+                           class="btn btn-primary btn-sm">
+                            View
+                        </a>
+
+                        <a href="@Model.AadhaarPath"
+                           download
+                           class="btn btn-success btn-sm">
+                            Download
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 10th -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-info text-white text-center">
+                        10th Marksheet
+                    </div>
+
+                    <div class="card-body text-center">
+
+                        <i class="fa fa-file-pdf fa-4x text-danger"></i>
+
+                        <hr />
+
+                        <a href="@Model.TenthMarksheetPath"
+                           target="_blank"
+                           class="btn btn-primary btn-sm">
+                            View
+                        </a>
+
+                        <a href="@Model.TenthMarksheetPath"
+                           download
+                           class="btn btn-success btn-sm">
+                            Download
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 12th -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-warning text-dark text-center">
+                        12th Marksheet
+                    </div>
+
+                    <div class="card-body text-center">
+
+                        <i class="fa fa-file-pdf fa-4x text-danger"></i>
+
+                        <hr />
+
+                        <a href="@Model.TwelfthMarksheetPath"
+                           target="_blank"
+                           class="btn btn-primary btn-sm">
+                            View
+                        </a>
+
+                        <a href="@Model.TwelfthMarksheetPath"
+                           download
+                           class="btn btn-success btn-sm">
+                            Download
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Graduation -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-secondary text-white text-center">
+                        Graduation Marksheet
+                    </div>
+
+                    <div class="card-body text-center">
+
+                        @if (!string.IsNullOrEmpty(Model.GraduationMarksheetPath))
+                        {
+                            <i class="fa fa-file-pdf fa-4x text-danger"></i>
+
+                            <hr />
+
+                            <a href="@Model.GraduationMarksheetPath"
+                               target="_blank"
+                               class="btn btn-primary btn-sm">
+                                View
+                            </a>
+
+                            <a href="@Model.GraduationMarksheetPath"
+                               download
+                               class="btn btn-success btn-sm">
+                                Download
+                            </a>
+                        }
+                        else
+                        {
+                            <h5 class="text-danger">
+                                Not Uploaded
+                            </h5>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    }
+
+</div>

@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model AnilUniversity.Models.Course
+
+@{
+    ViewData["Title"] = "Delete Course";
+}
+
+<h2 class="text-danger">Delete Course</h2>
+
+<div class="alert alert-warning">
+    Are you sure you want to delete this course?
+</div>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Course</th>
+        <td>@Model.CourseName</td>
+    </tr>
+
+    <tr>
+        <th>Duration</th>
+        <td>@Model.Duration</td>
+    </tr>
+
+    <tr>
+        <th>Fees</th>
+        <td>₹ @Model.Fees</td>
+    </tr>
+
+    <tr>
+        <th>Total Seats</th>
+        <td>@Model.TotalSeats</td>
+    </tr>
+
+</table>
+
+<form asp-action="Delete">
+
+    <input type="hidden" asp-for="CourseId" />
+
+    <button type="submit" class="btn btn-danger">
+        Delete
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>

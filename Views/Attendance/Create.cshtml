@@ -1,0 +1,65 @@
+﻿@model AnilUniversity.Models.Attendance
+
+@{
+    ViewData["Title"] = "Mark Attendance";
+}
+
+<h2>Mark Attendance</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Student
+        </label>
+
+        <select asp-for="StudentId"
+                asp-items="ViewBag.StudentId"
+                class="form-select">
+
+            <option value="">Select Student</option>
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label asp-for="AttendanceDate"></label>
+
+        <input asp-for="AttendanceDate"
+               type="date"
+               class="form-control" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Status</label>
+
+        <select asp-for="Status"
+                class="form-select">
+
+            <option>Present</option>
+
+            <option>Absent</option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-success">
+
+        Save Attendance
+
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+
+        Back
+
+    </a>
+
+</form>

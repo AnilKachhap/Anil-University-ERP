@@ -1,0 +1,336 @@
+﻿@model AnilUniversity.Models.Student
+
+@{
+    ViewData["Title"] = "Admission Preview";
+}
+
+
+<div class="container mt-5 mb-5">
+
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+
+        <div class="card-header bg-primary text-white text-center py-4 rounded-top-4">
+
+
+            <h2 class="fw-bold">
+                🎓 Anil University
+            </h2>
+
+
+            <h4>
+                Admission Preview
+            </h4>
+
+
+            <span class="badge bg-light text-dark mt-2">
+
+                Application No: @Model.ApplicationNo
+
+            </span>
+
+
+        </div>
+
+
+
+        <div class="card-body p-4">
+
+
+            <div class="row align-items-center mb-4">
+
+
+                <div class="col-md-3 text-center">
+
+
+                    @if (Model.StudentDocument != null &&
+                        !string.IsNullOrEmpty(Model.StudentDocument.PhotoPath))
+                    {
+
+                        <img src="@Url.Content(Model.StudentDocument.PhotoPath)"
+                             class="rounded-circle shadow"
+                             width="180"
+                             height="180" />
+
+                    }
+                    else
+                    {
+
+                        <div class="display-1">
+                            👤
+                        </div>
+
+                    }
+
+
+                </div>
+
+
+
+
+
+                <div class="col-md-9">
+
+
+                    <h2 class="fw-bold">
+                        @Model.FullName
+                    </h2>
+
+
+                    <h5 class="text-primary">
+
+                        📚 @Model.Course?.CourseName
+
+                    </h5>
+
+
+
+                    <p class="mt-3">
+
+                        <strong>Status:</strong>
+
+                        @if (Model.Status == "Approved")
+                        {
+                            <span class="badge bg-success">
+                                Approved
+                            </span>
+                        }
+                        else if (Model.Status == "Rejected")
+                        {
+                            <span class="badge bg-danger">
+                                Rejected
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">
+                                Pending
+                            </span>
+                        }
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <hr />
+
+
+
+            <h4 class="text-primary fw-bold mb-3">
+                👤 Student Details
+            </h4>
+
+
+
+            <div class="table-responsive">
+
+
+                <table class="table table-bordered">
+
+
+                    <tbody>
+
+
+                        <tr>
+                            <th width="30%">
+                                Student Name
+                            </th>
+                            <td>
+                                @Model.FullName
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>
+                                Father Name
+                            </th>
+                            <td>
+                                @Model.FatherName
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>
+                                Mother Name
+                            </th>
+                            <td>
+                                @Model.MotherName
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>
+                                Date Of Birth
+                            </th>
+                            <td>
+                                @Model.DOB.ToString("dd-MM-yyyy")
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>
+                                Mobile
+                            </th>
+                            <td>
+                                @Model.Mobile
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>
+                                Email
+                            </th>
+                            <td>
+                                @Model.Email
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>
+                                Address
+                            </th>
+                            <td>
+                                @Model.Address
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>
+                                Remarks
+                            </th>
+                            <td>
+                                @Model.Remarks
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+
+
+
+            <hr />
+
+
+
+            <h4 class="text-primary fw-bold mb-3">
+                📄 Uploaded Documents
+            </h4>
+
+
+
+            @if (Model.StudentDocument != null)
+            {
+
+
+                <div class="d-flex flex-wrap gap-2">
+
+
+                    <a class="btn btn-outline-primary"
+                       target="_blank"
+                       href="@Url.Content(Model.StudentDocument.AadhaarPath)">
+                        🪪 Aadhaar
+                    </a>
+
+
+
+                    <a class="btn btn-outline-primary"
+                       target="_blank"
+                       href="@Url.Content(Model.StudentDocument.TenthMarksheetPath)">
+                        📜 10th Marksheet
+                    </a>
+
+
+
+                    <a class="btn btn-outline-primary"
+                       target="_blank"
+                       href="@Url.Content(Model.StudentDocument.TwelfthMarksheetPath)">
+                        📜 12th Marksheet
+                    </a>
+
+
+
+                    <a class="btn btn-outline-primary"
+                       target="_blank"
+                       href="@Url.Content(Model.StudentDocument.GraduationMarksheetPath)">
+                        🎓 Graduation
+                    </a>
+
+
+                </div>
+
+
+            }
+
+
+
+
+            <hr />
+
+
+
+            <div class="text-center">
+
+
+                <a asp-action="Print"
+                   asp-route-id="@Model.StudentId"
+                   class="btn btn-primary btn-lg me-2">
+
+                    🖨 Print Form
+
+                </a>
+
+
+
+                <a asp-action="DownloadPdf"
+                   asp-route-id="@Model.StudentId"
+                   class="btn btn-danger btn-lg me-2">
+
+                    📄 Download PDF
+
+                </a>
+
+
+
+                <a asp-action="Index"
+                   class="btn btn-secondary btn-lg">
+
+                    ⬅ Back
+
+                </a>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>

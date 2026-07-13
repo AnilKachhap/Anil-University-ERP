@@ -1,0 +1,69 @@
+﻿@model AnilUniversity.Models.Notification
+
+@{
+    ViewData["Title"] = "Add Notification";
+}
+
+<h2>Add Notification</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+
+        <label asp-for="Title" class="form-label"></label>
+
+        <input asp-for="Title"
+               class="form-control" />
+
+        <span asp-validation-for="Title"
+              class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label asp-for="Message"
+               class="form-label"></label>
+
+        <textarea asp-for="Message"
+                  rows="5"
+                  class="form-control"></textarea>
+
+        <span asp-validation-for="Message"
+              class="text-danger"></span>
+
+    </div>
+
+    <div class="form-check mb-3">
+
+        <input asp-for="IsActive"
+               class="form-check-input" />
+
+        <label asp-for="IsActive"
+               class="form-check-label"></label>
+
+    </div>
+
+    <button type="submit"
+            class="btn btn-success">
+
+        Save Notification
+
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+
+        Back
+
+    </a>
+
+</form>
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

@@ -1,0 +1,39 @@
+1.Write a C# program to read the elements from user in 2d array and print those elements.
+
+
+2.write a C# program to print the sum of 2d array.
+
+1st array
+1 2
+3 4
+
+2nd array
+1 2
+3 4
+
+Output array
+2 4
+6 8
+
+
+3.Write a C# program to print the sum of right diagonal in an 2 dimensional array and user has to enter size of array and elements in that array.
+eg:
+size: 3 3
+elements
+1 2 4
+4 5 6
+7 8 9
+output as:
+16
+
+
+4.Write a C# program to print the sum of left diagonal in an 2 dimensional array and user has to enter size of array and elements in that array.
+eg:
+size: 3 3
+elements
+1 2 4
+4 5 6
+7 8 9
+output as-:
+15
+

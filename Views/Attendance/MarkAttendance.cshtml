@@ -1,0 +1,68 @@
+﻿@model AnilUniversity.ViewModels.AttendanceSheetVM
+
+@{
+    ViewData["Title"] = "Mark Attendance";
+}
+
+<h2>Mark Attendance</h2>
+
+<form asp-action="MarkAttendance" method="post">
+
+    <div class="mb-3">
+        <label>Date</label>
+
+        <input asp-for="AttendanceDate"
+               type="date"
+               class="form-control" />
+    </div>
+
+    <table class="table table-bordered">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>Student Name</th>
+
+                <th width="150">Present</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for (int i = 0; i < Model.Students.Count; i++)
+            {
+                <tr>
+
+                    <td>
+                        @Model.Students[i].StudentName
+
+                        <input type="hidden"
+                               asp-for="Students[i].StudentId" />
+
+                        <input type="hidden"
+                               asp-for="Students[i].StudentName" />
+                    </td>
+
+                    <td class="text-center">
+
+                        <input asp-for="Students[i].IsPresent"
+                               class="form-check-input"
+                               style="transform:scale(1.4);" />
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+    <button class="btn btn-success">
+        Save Attendance
+    </button>
+
+</form>

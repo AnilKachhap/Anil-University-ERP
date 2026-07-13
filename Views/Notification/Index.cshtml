@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model IEnumerable<AnilUniversity.Models.Notification>
+
+@{
+    ViewData["Title"] = "Notifications";
+}
+
+<h2 class="mb-4">Notifications</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="fa fa-plus"></i> Add Notification
+    </a>
+</div>
+
+<table class="table table-bordered table-striped table-hover align-middle">
+
+    <thead class="table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Message</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th width="180" class="text-center">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Title</td>
+
+                <td>@item.Message</td>
+
+                <td>@item.CreatedDate.ToString("dd-MMM-yyyy")</td>
+
+                <td>
+                    @if (item.IsActive)
+                    {
+                        <span class="badge bg-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Inactive</span>
+                    }
+                </td>
+
+                <td class="text-center">
+
+                    <a asp-action="Edit"
+                       asp-route-id="@item.NotificationId"
+                       class="btn btn-warning btn-sm me-2">
+                        <i class="fa fa-edit"></i> Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.NotificationId"
+                       class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash"></i> Delete
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

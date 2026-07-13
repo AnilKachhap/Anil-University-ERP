@@ -1,0 +1,440 @@
+﻿
+@model AnilUniversity.Models.StudentPayment
+
+@{
+    ViewData["Title"] = "Student Fee Payment";
+    var student = ViewBag.Student as AnilUniversity.Models.Student;
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+            <h3>Student Fee Payment</h3>
+        </div>
+
+
+        <div class="card-body">
+
+            <form asp-action="Create" method="post" id="paymentForm">
+
+
+                <input asp-for="StudentId" type="hidden" />
+
+
+                <input type="hidden" id="RazorpayPaymentId" name="RazorpayPaymentId" />
+                <input type="hidden" id="RazorpayOrderId" name="RazorpayOrderId" />
+                <input type="hidden" id="RazorpaySignature" name="RazorpaySignature" />
+
+
+
+                <div class="row">
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Student Name
+                        </label>
+
+                        <input class="form-control"
+                               value="@student.FullName"
+                               readonly />
+
+                    </div>
+
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Course
+                        </label>
+
+                        <input class="form-control"
+                               value="@student.Course.CourseName"
+                               readonly />
+
+                    </div>
+
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="Amount"></label>
+
+                        <input asp-for="Amount"
+                               class="form-control"
+                               id="Amount" />
+
+                    </div>
+
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label>
+                            Payment Mode
+                        </label>
+
+
+                        <select asp-for="PaymentMode"
+                                id="paymentMode"
+                                class="form-select">
+
+
+                            <option value="">
+                                --Select Mode--
+                            </option>
+
+                            <option>
+                                Cash
+                            </option>
+
+                            <option>
+                                UPI
+                            </option>
+
+                            <option>
+                                QR Code
+                            </option>
+
+                            <option>
+                                Credit Card
+                            </option>
+
+                            <option>
+                                Debit Card
+                            </option>
+
+                            <option>
+                                Net Banking
+                            </option>
+
+
+                        </select>
+
+                    </div>
+
+
+
+
+                    <div class="col-md-6 mb-3"
+                         id="transactionDiv">
+
+
+                        <label asp-for="TransactionId"></label>
+
+                        <input asp-for="TransactionId"
+                               class="form-control" />
+
+                    </div>
+
+
+
+
+                    <div class="col-md-6 mb-3">
+
+
+                        <label>
+                            Payment Status
+                        </label>
+
+
+                        <select asp-for="PaymentStatus"
+                                class="form-select">
+
+                            <option>
+                                Paid
+                            </option>
+
+                            <option>
+                                Pending
+                            </option>
+
+
+                        </select>
+
+                    </div>
+
+
+
+
+                    <div class="col-md-12 mb-3">
+
+
+                        <label>
+                            Remarks
+                        </label>
+
+
+                        <textarea asp-for="Remarks"
+                                  class="form-control"></textarea>
+
+
+                    </div>
+
+
+
+
+
+                  
+
+
+
+
+                </div>
+
+
+
+                <button type="button"
+                        id="payBtn"
+                        class="btn btn-success">
+
+                    Pay Now
+
+                </button>
+
+
+
+                <button type="submit"
+                        id="saveBtn"
+                        class="btn btn-primary">
+
+                    Save Payment
+
+                </button>
+
+
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Student"
+                       asp-action="Index"
+                       class="btn btn-secondary">
+                        Cancel
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="StudentPortal"
+                       asp-action="MyPayments"
+                       class="btn btn-secondary">
+                        Cancel
+                    </a>
+                }
+
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+@section Scripts
+{
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+
+    <script>
+
+
+        $(document).ready(function(){
+
+
+        $("#transactionDiv").hide();
+
+        $("#payBtn").hide();
+
+        $("#saveBtn").hide();
+
+
+
+        $("#paymentMode").change(function(){
+
+
+        let mode=$(this).val();
+
+
+
+        if(mode=="Cash")
+        {
+
+        $("#transactionDiv").hide();
+
+        $("#qrSection").hide();
+
+        $("#payBtn").hide();
+
+        $("#saveBtn").show();
+
+
+        }
+
+        else if(mode=="UPI" || mode=="QR Code")
+        {
+
+        $("#transactionDiv").hide();
+
+        $("#payBtn").show();
+
+        $("#saveBtn").hide();
+
+        }
+    
+        else if(mode!="")
+        {
+
+        $("#transactionDiv").hide();
+
+        $("#payBtn").show();
+
+        $("#saveBtn").hide();
+
+        }
+
+        });
+
+
+
+        });
+
+
+
+
+
+        $("#payBtn").click(function(){
+
+
+
+        let amount=$("#Amount").val();
+
+
+
+        if(amount<=0)
+        {
+
+        alert("Enter Amount");
+
+        return;
+
+        }
+
+
+
+        $.ajax({
+
+        url:'/Payment/CreateOrder',
+
+        type:'POST',
+
+        data:{
+        amount:amount
+        },
+
+
+        success:function(data){
+
+
+
+        var options={
+
+
+        key:data.key,
+
+
+        amount:amount*100,
+
+
+        currency:"INR",
+
+
+        name:"ANIL UNIVERSITY",
+
+
+        description:"Student Fee Payment",
+
+
+        order_id:data.orderId,
+
+
+
+        handler:function(response){
+
+
+
+        $("#RazorpayPaymentId")
+        .val(response.razorpay_payment_id);
+
+
+
+        $("#RazorpayOrderId")
+        .val(response.razorpay_order_id);
+
+
+
+        $("#RazorpaySignature")
+        .val(response.razorpay_signature);
+
+
+
+        $("#paymentForm")
+        .attr("action","/Payment/VerifyPayment");
+
+
+
+        $("#paymentForm").submit();
+
+
+        },
+
+
+
+        theme:{
+
+
+        color:"#198754"
+
+
+        }
+
+
+
+        };
+
+
+
+        var razorpay=new Razorpay(options);
+
+
+        razorpay.open();
+
+
+
+        }
+
+
+
+        });
+
+
+
+        });
+
+
+
+    </script>
+
+
+}

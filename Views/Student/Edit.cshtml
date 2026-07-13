@@ -1,0 +1,128 @@
+﻿@model AnilUniversity.Models.Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Edit Student Details</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input type="hidden" asp-for="StudentId" />
+                <input type="hidden" asp-for="ApplicationNo" />
+                <input type="hidden" asp-for="CreatedDate" />
+                <input type="hidden" asp-for="Status" />
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="FullName" class="form-label"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="FatherName" class="form-label"></label>
+                        <input asp-for="FatherName" class="form-control" />
+                        <span asp-validation-for="FatherName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="MotherName" class="form-label"></label>
+                        <input asp-for="MotherName" class="form-control" />
+                        <span asp-validation-for="MotherName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DOB" class="form-label"></label>
+                        <input asp-for="DOB" type="date" class="form-control" />
+                        <span asp-validation-for="DOB" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Gender" class="form-label"></label>
+
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">--Select Gender--</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Mobile" class="form-label"></label>
+                        <input asp-for="Mobile" class="form-control" />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="CourseId" class="form-label"></label>
+
+                        <select asp-for="CourseId"
+                                asp-items="ViewBag.CourseId"
+                                class="form-select">
+                        </select>
+
+                        <span asp-validation-for="CourseId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label asp-for="Address" class="form-label"></label>
+
+                        <textarea asp-for="Address"
+                                  rows="4"
+                                  class="form-control"></textarea>
+
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <button type="submit" class="btn btn-success">
+                    Update Student
+                </button>
+                <a asp-action="EditDocuments"
+                   asp-route-id="@Model.StudentId"
+                   class="btn btn-info">
+                    Edit Documents
+                </a>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

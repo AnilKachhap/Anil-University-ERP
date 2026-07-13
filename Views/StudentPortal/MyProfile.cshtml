@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+@model AnilUniversity.Models.Student
+
+<h2>My Profile</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Application No</th>
+        <td>@Model.ApplicationNo</td>
+    </tr>
+
+    <tr>
+        <th>Name</th>
+        <td>@Model.FullName</td>
+    </tr>
+
+    <tr>
+        <th>Father Name</th>
+        <td>@Model.FatherName</td>
+    </tr>
+
+    <tr>
+        <th>Mother Name</th>
+        <td>@Model.MotherName</td>
+    </tr>
+
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+
+    <tr>
+        <th>Mobile</th>
+        <td>@Model.Mobile</td>
+    </tr>
+
+    <tr>
+        <th>Course</th>
+        <td>@Model.Course.CourseName</td>
+    </tr>
+
+    <tr>
+        <th>Status</th>
+        <td>@Model.Status</td>
+    </tr>
+    <a asp-action="EditProfile"
+       class="btn btn-warning mt-3">
+        Edit Profile
+    </a>
+</table>

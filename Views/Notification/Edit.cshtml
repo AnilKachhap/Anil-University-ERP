@@ -1,0 +1,37 @@
+﻿@model AnilUniversity.Models.Notification
+
+<h2>Edit Notification</h2>
+
+<form asp-action="Edit">
+
+    <input type="hidden" asp-for="NotificationId" />
+
+    <div class="mb-3">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Message"></label>
+        <textarea asp-for="Message"
+                  class="form-control"
+                  rows="5"></textarea>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsActive"
+               class="form-check-input" />
+        <label asp-for="IsActive"
+               class="form-check-label"></label>
+    </div>
+
+    <button class="btn btn-success">
+        Update
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</form>

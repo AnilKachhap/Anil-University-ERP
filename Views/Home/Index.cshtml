@@ -1,0 +1,425 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<style>
+
+    .hero-section {
+        background: url('/images/university.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 600px;
+        border-radius: 0 0 30px 30px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+
+    .hero-overlay {
+        background: linear-gradient(rgba(13,110,253,.75),rgba(0,0,0,.65));
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-section h1 {
+        font-size: 65px;
+        font-weight: bold;
+        text-shadow: 3px 3px 10px black;
+    }
+
+    .hero-section p {
+        font-size: 22px;
+    }
+
+    .hero-section .btn {
+        padding: 12px 35px;
+        font-size: 20px;
+        border-radius: 30px;
+    }
+
+    .card {
+        transition: .4s;
+    }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.25);
+        }
+
+</style>
+<div class="container-fluid p-0">
+
+    <!-- Hero Section -->
+    <div class="hero-section text-white">
+
+        <div class="hero-overlay">
+
+            <div class="container text-center py-5">
+
+                <h1 class="display-3 fw-bold">
+                    ANIL UNIVERSITY
+                </h1>
+
+                <p class="lead">
+                    Online Admission & Student Management Portal
+                </p>
+
+                <p>
+                    Admissions Open for 2026-27 Session
+                </p>
+
+                <a asp-controller="Student"
+                   asp-action="Register"
+                   class="btn btn-warning btn-lg me-2">
+
+                    Apply Now
+
+                </a>
+
+                <a asp-controller="Course"
+                   asp-action="PublicCourses"
+                   class="btn btn-light btn-lg">
+
+                    Explore Courses
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+      
+
+    </div>
+
+    <!-- Statistics -->
+<div class="row text-center mt-5 g-4">
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-lg bg-primary text-white rounded-4">
+            <div class="card-body py-4">
+                <h1>500+</h1>
+                <h5>Students</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-lg bg-success text-white rounded-4">
+            <div class="card-body py-4">
+                <h1>15+</h1>
+                <h5>Courses</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-lg bg-warning rounded-4">
+            <div class="card-body py-4">
+                <h1>50+</h1>
+                <h5>Faculty</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-lg bg-danger text-white rounded-4">
+            <div class="card-body py-4">
+                <h1>98%</h1>
+                <h5>Placement</h5>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <!-- Popular Courses -->
+<h2 class="text-center fw-bold mt-5 mb-4">
+    🚀 Popular Courses
+</h2>
+
+<div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <h2>💻</h2>
+
+                    <h3>.NET DEVELOPMENT</h3>
+
+                    <p>
+                    FULL STACK .NET DEVELOPMENT COURSE
+                    </p>
+
+                    <p><b>Duration:</b> 8 MONTHS</p>
+
+                    <a asp-controller="Student"
+                       asp-action="Register"
+                       class="btn btn-primary">
+
+                        Apply
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <h2>🖥️</h2>
+
+                    <h3>JAVA DEVELOPMENT</h3>
+
+                    <p>
+                    FULL STACK JAVA DEVELOPMENT COURSE
+                    </p>
+
+                    <p><b>Duration:</b> 9 MONTHS</p>
+
+                    <a asp-controller="Student"
+                       asp-action="Register"
+                       class="btn btn-success">
+
+                        Apply
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <h2>📊</h2>
+
+                    <h3>PYTHON DEVELOPMENT</h3>
+
+                    <p>
+                    FULL STACK PYTHON DEVELOPMENT COURSE
+                    </p>
+
+                    <p><b>Duration:</b> 8 MONTHS</p>
+
+                    <a asp-controller="Student"
+                       asp-action="Register"
+                       class="btn btn-danger">
+
+                        Apply
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    <div class="col-md-4">
+
+        <div class="card shadow h-100">
+
+            <div class="card-body text-center">
+
+                <h2>📊</h2>
+
+                <h3>DATA SCIENCE</h3>
+
+                <p>
+                    FULL STACK DATA SCIENCE COURSE
+                </p>
+
+                <p><b>Duration:</b> 8 MONTHS</p>
+
+                <a asp-controller="Student"
+                   asp-action="Register"
+                   class="btn btn-warning">
+
+                    Apply
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-md-4">
+
+        <div class="card shadow h-100">
+
+            <div class="card-body text-center">
+
+                <h2>📊</h2>
+
+                <h3>AI ML</h3>
+
+                <p>
+                    FULL STACK AI ML COURSE
+                </p>
+
+                <p><b>Duration:</b> 8 MONTHS</p>
+
+                <a asp-controller="Student"
+                   asp-action="Register"
+                   class="btn btn-info">
+
+                    Apply
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-md-4">
+
+        <div class="card shadow h-100">
+
+            <div class="card-body text-center">
+
+                <h2>📊</h2>
+
+                <h3>UI DEVELOPMENT</h3>
+
+                <p>
+                    FULL STACK UI DEVELOPMENT COURSE
+                </p>
+
+                <p><b>Duration:</b> 8 MONTHS</p>
+
+                <a asp-controller="Student"
+                   asp-action="Register"
+                   class="btn btn-secondary">
+
+                    Apply
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    <!-- Why Choose Us -->
+
+    <div class="mt-5">
+
+        <h2 class="text-center">
+
+            Why Choose Anil University?
+
+        </h2>
+
+        <div class="row mt-4">
+
+            <div class="col-md-3">
+
+                <div class="card shadow text-center">
+
+                    <div class="card-body">
+
+                        <h1>🎓</h1>
+
+                        <h5>Experienced Faculty</h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card shadow text-center">
+
+                    <div class="card-body">
+
+                        <h1>🏢</h1>
+
+                        <h5>Modern Campus</h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card shadow text-center">
+
+                    <div class="card-body">
+
+                        <h1>💼</h1>
+
+                        <h5>Placement Support</h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card shadow text-center">
+
+                    <div class="card-body">
+
+                        <h1>🌐</h1>
+
+                        <h5>Online Admission</h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contact -->
+
+<div class="mt-5 rounded-4 p-5 text-center text-white"
+     style="background:linear-gradient(135deg,#0d6efd,#6610f2);">
+
+    <h2 class="fw-bold">
+        Contact Us
+    </h2>
+
+    <p class="mt-3">
+        📧 anilkachhapmca@gmail.com
+    </p>
+
+    <p>
+        📞 +91 7667052128
+    </p>
+
+    <p>
+        📍 Hyderabad, Telangana
+    </p>
+
+</div>

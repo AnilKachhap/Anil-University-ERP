@@ -1,0 +1,350 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model AnilUniversity.Models.Student
+
+@{
+    ViewData["Title"] = "Student Registration";
+}
+
+
+<div class="container mt-5 mb-5">
+
+
+    <div class="row justify-content-center">
+
+
+        <div class="col-lg-10">
+
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+
+                <div class="card-header bg-primary text-white rounded-top-4 text-center py-4">
+
+                    <h2 class="fw-bold mb-1">
+                        🎓 Student Admission Form
+                    </h2>
+
+                    <p class="mb-0">
+                        Anil University Online Admission Portal
+                    </p>
+
+                </div>
+
+
+
+                <div class="card-body p-4">
+
+
+                    <div asp-validation-summary="All"
+                         class="text-danger mb-3">
+                    </div>
+
+
+                    <form asp-action="Register" method="post">
+
+
+                        <h5 class="text-primary fw-bold mb-3">
+                            👤 Personal Details
+                        </h5>
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="FullName"
+                                       class="form-label fw-bold">
+
+                                    Full Name
+
+                                </label>
+
+
+                                <input asp-for="FullName"
+                                       class="form-control form-control-lg"
+                                       placeholder="Enter full name" />
+
+
+                                <span asp-validation-for="FullName"
+                                      class="text-danger">
+                                </span>
+
+
+                            </div>
+
+
+
+                            <div class="col-md-6 mb-3">
+
+
+                                <label asp-for="FatherName"
+                                       class="form-label fw-bold">
+
+                                    Father Name
+
+                                </label>
+
+
+                                <input asp-for="FatherName"
+                                       class="form-control form-control-lg"
+                                       placeholder="Enter father name" />
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 mb-3">
+
+
+                                <label asp-for="MotherName"
+                                       class="form-label fw-bold">
+
+                                    Mother Name
+
+                                </label>
+
+
+                                <input asp-for="MotherName"
+                                       class="form-control form-control-lg"
+                                       placeholder="Enter mother name" />
+
+
+                            </div>
+
+
+
+
+                            <div class="col-md-6 mb-3">
+
+
+                                <label asp-for="DOB"
+                                       class="form-label fw-bold">
+
+                                    Date of Birth
+
+                                </label>
+
+
+                                <input asp-for="DOB"
+                                       type="date"
+                                       class="form-control form-control-lg" />
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                        <hr />
+
+
+
+                        <h5 class="text-primary fw-bold mb-3">
+                            📱 Contact Details
+                        </h5>
+
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 mb-3">
+
+
+                                <label asp-for="Gender"
+                                       class="form-label fw-bold">
+
+                                    Gender
+
+                                </label>
+
+
+                                <select asp-for="Gender"
+                                        class="form-select form-select-lg">
+
+
+                                    <option value="">
+                                        Select Gender
+                                    </option>
+
+                                    <option>
+                                        Male
+                                    </option>
+
+                                    <option>
+                                        Female
+                                    </option>
+
+                                    <option>
+                                        Other
+                                    </option>
+
+
+                                </select>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="col-md-6 mb-3">
+
+
+                                <label asp-for="Mobile"
+                                       class="form-label fw-bold">
+
+                                    Mobile Number
+
+                                </label>
+
+
+                                <input asp-for="Mobile"
+                                       class="form-control form-control-lg"
+                                       placeholder="Enter mobile number" />
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 mb-3">
+
+
+                                <label asp-for="Email"
+                                       class="form-label fw-bold">
+
+                                    Email Address
+
+                                </label>
+
+
+                                <input asp-for="Email"
+                                       class="form-control form-control-lg"
+                                       placeholder="example@gmail.com" />
+
+
+                            </div>
+
+
+
+
+
+                            <div class="col-md-6 mb-3">
+
+
+                                <label asp-for="CourseId"
+                                       class="form-label fw-bold">
+
+                                    Select Course
+
+                                </label>
+
+
+                                <select asp-for="CourseId"
+                                        asp-items="ViewBag.CourseId"
+                                        class="form-select form-select-lg">
+
+
+                                    <option value="">
+                                        Select Course
+                                    </option>
+
+
+                                </select>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                        <hr />
+
+
+
+                        <h5 class="text-primary fw-bold mb-3">
+                            🏠 Address Details
+                        </h5>
+
+
+
+                        <textarea asp-for="Address"
+                                  rows="4"
+                                  class="form-control"
+                                  placeholder="Enter complete address">
+                        </textarea>
+
+
+
+
+                        <div class="text-center mt-4">
+
+
+                            <button type="submit"
+                                    class="btn btn-success btn-lg px-5 shadow">
+
+
+                                Save & Continue →
+
+                            </button>
+
+
+                        </div>
+
+
+
+                    </form>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

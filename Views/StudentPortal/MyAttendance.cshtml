@@ -1,0 +1,100 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+@model IEnumerable<AnilUniversity.Models.Attendance>
+
+@{
+    ViewData["Title"] = "My Attendance";
+}
+
+<h2>My Attendance</h2>
+
+<hr />
+
+<div class="row mb-4">
+
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body text-center">
+                <h5>Total Days</h5>
+                <h2>@ViewBag.Total</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body text-center">
+                <h5>Present</h5>
+                <h2>@ViewBag.Present</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-danger text-white">
+            <div class="card-body text-center">
+                <h5>Absent</h5>
+                <h2>@ViewBag.Absent</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-warning">
+            <div class="card-body text-center">
+                <h5>Attendance %</h5>
+                <h2>@ViewBag.Percentage %</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>Date</th>
+
+            <th>Status</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @item.AttendanceDate.ToString("dd-MMM-yyyy")
+                </td>
+
+                <td>
+
+                    @if (item.Status == "Present")
+                    {
+                        <span class="badge bg-success">
+                            Present
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">
+                            Absent
+                        </span>
+                    }
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<AnilUniversity.Models.StudentPayment>
+
+@{
+    ViewData["Title"] = "Payment List";
+}
+
+<h2>Payment List</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<table class="table table-bordered table-striped" id="paymentTable">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>Receipt No</th>
+
+            <th>Student</th>
+
+            <th>Course</th>
+
+            <th>Amount</th>
+
+            <th>Status</th>
+
+            <th>Date</th>
+
+            <th width="220">Action</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @item.PaymentId
+                </td>
+
+                <td>
+                    @item.Student?.FullName
+                </td>
+
+                <td>
+                    @item.Student?.Course?.CourseName
+                </td>
+
+                <td>
+                    ₹ @item.Amount
+                </td>
+
+                <td>
+
+                    @if (item.PaymentStatus == "Paid")
+                    {
+                        <span class="badge bg-success">
+                            Paid
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">
+                            Pending
+                        </span>
+                    }
+
+                </td>
+
+                <td>
+                    @item.PaymentDate.ToString("dd-MM-yyyy")
+                </td>
+
+                <td>
+
+                    <a asp-action="Receipt"
+                       asp-route-id="@item.PaymentId"
+                       class="btn btn-info btn-sm">
+
+                        Receipt
+
+                    </a>
+
+                    <a asp-action="DownloadReceiptPdf"
+                       asp-route-id="@item.PaymentId"
+                       class="btn btn-danger btn-sm">
+
+                        PDF
+
+                    </a>
+
+                    <a asp-action="History"
+                       asp-route-studentId="@item.StudentId"
+                       class="btn btn-secondary btn-sm">
+
+                        History
+
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('#paymentTable').DataTable();
+
+        });
+
+    </script>
+
+}

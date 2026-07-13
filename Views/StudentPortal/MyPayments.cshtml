@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+@model IEnumerable<AnilUniversity.Models.StudentPayment>
+
+<h2>My Payment History</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    @if (!Model.Any(x => x.PaymentStatus == "Success"))
+    {
+        <a asp-controller="Payment"
+           asp-action="PayNow"
+           class="btn btn-primary">
+            💳 Pay Now
+        </a>
+    }
+    else
+    {
+        <span class="badge bg-success fs-6">
+            Payment Completed
+        </span>
+    }
+
+</div>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+        <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Mode</th>
+            <th>Status</th>
+            <th>Receipt</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.PaymentDate.ToString("dd-MM-yyyy")</td>
+
+                <td>₹ @item.Amount</td>
+
+                <td>@item.PaymentMode</td>
+
+                <td>@item.PaymentStatus</td>
+
+                <td>
+                    @* <a asp-controller="Payment"
+                       asp-action="PayNow"
+                       class="btn btn-primary mb-3">
+                        💳 Pay Now
+                    </a> *@
+
+                    <a asp-controller="Payment"
+                       asp-action="Receipt"
+                       asp-route-id="@item.PaymentId"
+                       class="btn btn-success btn-sm">
+
+                        View Receipt
+
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

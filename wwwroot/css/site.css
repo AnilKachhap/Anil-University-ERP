@@ -1,0 +1,133 @@
+
+:root {
+    --primary: #2563eb;
+    --secondary: #0f172a;
+    --accent: #38bdf8;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg: #f4f7fb;
+    --card: #fff;
+    --text: #1f2937;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Poppins,sans-serif;
+    background: var(--bg);
+    color: var(--text)
+}
+
+.card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.08);
+    transition: .3s
+}
+
+    .card:hover {
+        transform: translateY(-4px)
+    }
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    border-radius: 10px
+}
+
+.btn-success {
+    border-radius: 10px
+}
+
+.btn-danger {
+    border-radius: 10px
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    padding: .7rem
+}
+
+.table {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden
+}
+
+    .table thead {
+        background: var(--secondary);
+        color: #fff
+    }
+
+    .table tbody tr:hover {
+        background: #eef6ff
+    }
+
+.badge-success {
+    background: var(--success)
+}
+
+.badge-danger {
+    background: var(--danger)
+}
+
+.badge-warning {
+    background: var(--warning);
+    color: #fff
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border-radius: 8px;
+    padding: .4rem .7rem
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border-radius: 8px
+}
+
+.stat-card {
+    background: linear-gradient(135deg,#2563eb,#38bdf8);
+    color: #fff;
+    border-radius: 18px;
+    padding: 22px
+}
+
+    .stat-card h2 {
+        font-size: 2rem;
+        font-weight: 700
+    }
+
+    .stat-card i {
+        font-size: 2rem;
+        opacity: .9
+    }
+
+.footer {
+    letter-spacing: .5px
+}
+
+::-webkit-scrollbar {
+    width: 8px
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 10px
+}
+
+@media(max-width:991px) {
+    .sidebar {
+        left: -270px
+    }
+
+        .sidebar.show {
+            left: 0
+        }
+
+    .topbar, .content, .footer {
+        margin-left: 0 !important
+    }
+}

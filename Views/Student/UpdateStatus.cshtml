@@ -1,0 +1,40 @@
+﻿@model AnilUniversity.Models.Student
+
+@{
+    ViewData["Title"] = "Update Status";
+}
+
+<h2>Update Student Status</h2>
+
+<form asp-action="UpdateStatus" method="post">
+
+    <input type="hidden" asp-for="StudentId" />
+
+    <div class="mb-3">
+        <label>Status</label>
+
+        <select asp-for="Status" class="form-select">
+            <option>Pending</option>
+            <option>Approved</option>
+            <option>Rejected</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Remarks</label>
+
+        <textarea asp-for="Remarks"
+                  class="form-control"
+                  rows="4"></textarea>
+    </div>
+
+    <button class="btn btn-success">
+        Save
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</form>

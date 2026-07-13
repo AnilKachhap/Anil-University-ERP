@@ -1,0 +1,192 @@
+﻿@model IEnumerable<AnilUniversity.Models.Student>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Date Wise Student Report</title>
+
+    <style>
+
+            body {
+                font-family: Arial;
+                font-size: 13px;
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 0;
+            }
+
+            h3 {
+                text-align: center;
+                margin-top: 5px;
+                color: #555;
+            }
+
+            .info {
+                margin: 20px 0;
+            }
+
+                .info table {
+                    width: 100%;
+                    border: none;
+                }
+
+                .info td {
+                    border: none;
+                    padding: 5px;
+                }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+
+            th {
+                background: #0d6efd;
+                color: white;
+            }
+
+            th,
+            td {
+                padding: 8px;
+                text-align: center;
+            }
+
+            .footer {
+                margin-top: 60px;
+            }
+
+            .signature {
+                width: 250px;
+                float: right;
+                text-align: center;
+            }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Anil University</h1>
+
+    <h3>Date Wise Student Admission Report</h3>
+
+    <hr />
+
+    <div class="info">
+
+        <table>
+
+            <tr>
+
+                <td>
+                    <b>From Date :</b>
+                    @ViewBag.FromDate
+                </td>
+
+                <td>
+                    <b>To Date :</b>
+                    @ViewBag.ToDate
+                </td>
+
+                <td style="text-align:right">
+                    <b>Total Students :</b>
+                    @ViewBag.TotalStudents
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td colspan="3">
+                    <b>Generated On :</b>
+                    @DateTime.Now.ToString("dd MMM yyyy hh:mm tt")
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>S.No</th>
+                <th>Application No</th>
+                <th>Student Name</th>
+                <th>Course</th>
+                <th>Admission Date</th>
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @{
+                int sr = 1;
+            }
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@sr</td>
+                    <td>@item.ApplicationNo</td>
+                    <td>@item.FullName</td>
+                    <td>@item.Course?.CourseName</td>
+                    <td>@item.CreatedDate.ToString("dd-MM-yyyy")</td>
+                    <td>@item.Status</td>
+
+                </tr>
+
+                sr++;
+            }
+
+        </tbody>
+
+    </table>
+
+    <div class="footer">
+
+        <div class="signature">
+
+            _______________________
+
+            <br />
+
+            <b>Registrar</b>
+
+            <br />
+
+            Anil University
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+@model AnilUniversity.Models.Student
+@using AnilUniversity.Models
+
+@{
+    ViewData["Title"] = "Student Dashboard";
+    var notices = ViewBag.Notifications as List<Notification>;
+}
+
+<div class="container-fluid">
+
+    <div class="row mb-4">
+
+        <div class="col-md-9">
+
+            <h2 class="fw-bold">
+                🎓 Student Dashboard
+            </h2>
+
+            <h5 class="text-muted">
+                Welcome,
+                @if (Model.StudentDocument != null)
+                {
+                    <img src="@Model.StudentDocument.PhotoPath"
+                         width="90"
+                         height="90"
+                         class="rounded-circle border border-3 border-primary" />
+                }
+                <span class="text-primary fw-bold">
+                    @Model.FullName
+                </span>
+            </h5>
+
+        </div>
+
+        <div class="col-md-3 text-end">
+
+            @if (Model.Status == "Approved")
+            {
+                <span class="badge bg-success fs-5">
+                    ✔ Approved
+                </span>
+            }
+            else if (Model.Status == "Pending")
+            {
+                <span class="badge bg-warning text-dark fs-5">
+                    ⏳ Pending
+                </span>
+            }
+            else
+            {
+                <span class="badge bg-danger fs-5">
+                    ✖ Rejected
+                </span>
+            }
+
+        </div>
+
+    </div>
+
+    <!-- Summary Cards -->
+
+    <div class="row mb-4">
+
+        <div class="col-md-3">
+
+            <div class="card shadow border-0 bg-primary text-white">
+
+                <div class="card-body text-center">
+
+                    <h6>Application No</h6>
+
+                    <h5>@Model.ApplicationNo</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow border-0 bg-success text-white">
+
+                <div class="card-body text-center">
+
+                    <h6>Student ID</h6>
+
+                    <h5>@Model.StudentCode</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow border-0 bg-warning">
+
+                <div class="card-body text-center">
+
+                    <h6>Course</h6>
+
+                    <h5>@Model.Course?.CourseName</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow border-0 bg-info text-white">
+
+                <div class="card-body text-center">
+
+                    <h6>Admission Date</h6>
+
+                    <h5>@Model.CreatedDate.ToString("dd MMM yyyy")</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="row mb-4">
+
+            <div class="col-md-3">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body text-center">
+
+                        <h6>📄 Documents</h6>
+
+                        <h3 class="text-primary">
+                            @ViewBag.DocumentCount / 6
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body text-center">
+
+                        <h6>💳 Fees Paid</h6>
+
+                        <h3 class="text-success">
+                            ₹@ViewBag.TotalPayment
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body text-center">
+
+                        <h6>📅 Attendance</h6>
+
+                        <h3 class="text-warning">
+                            @ViewBag.AttendancePercentage %
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body text-center">
+
+                        <h6>🔔 Notices</h6>
+
+                        <h3 class="text-danger">
+                            @(notices?.Count ?? 0)
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Student Information -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h5 class="mb-0">
+                        👤 Student Information
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-striped">
+
+                        <tr>
+                            <th>Full Name</th>
+                            <td>@Model.FullName</td>
+                        </tr>
+
+                        <tr>
+                            <th>Father Name</th>
+                            <td>@Model.FatherName</td>
+                        </tr>
+
+                        <tr>
+                            <th>Email</th>
+                            <td>@Model.Email</td>
+                        </tr>
+
+                        <tr>
+                            <th>Mobile</th>
+                            <td>@Model.Mobile</td>
+                        </tr>
+
+                        <tr>
+                            <th>Course</th>
+                            <td>@Model.Course?.CourseName</td>
+                        </tr>
+
+                        <tr>
+                            <th>Status</th>
+                            <td>@Model.Status</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Quick Actions -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-success text-white">
+
+                    <h5 class="mb-0">
+
+                        ⚡ Quick Actions
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="d-grid gap-2">
+
+                        <a asp-action="MyProfile"
+                           class="btn btn-outline-primary">
+                            👤 My Profile
+                        </a>
+
+                        <a asp-action="EditProfile"
+                           class="btn btn-outline-secondary">
+                            ✏ Edit Profile
+                        </a>
+
+                        <a asp-action="MyDocuments"
+                           class="btn btn-outline-success">
+                            📁 My Documents
+                        </a>
+
+                        <a asp-action="MyAttendance"
+                           class="btn btn-outline-warning">
+                            📅 Attendance
+                        </a>
+
+                        <a asp-action="MyPayments"
+                           class="btn btn-outline-info">
+                            💳 Payments
+                        </a>
+
+                        <a asp-action="MyIdCard"
+                           class="btn btn-outline-dark">
+                            🪪 Download ID Card
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Notifications -->
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-dark text-white">
+
+            <h5 class="mb-0">
+
+                🔔 Latest Notifications
+
+            </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            @if (notices != null && notices.Any())
+            {
+                foreach (var item in notices)
+                {
+                    <div class="border-bottom mb-3 pb-3">
+
+                        <h5 class="text-primary">
+                            @item.Title
+                        </h5>
+
+                        <p>
+                            @item.Message
+                        </p>
+
+                        <small class="text-muted">
+
+                            @item.CreatedDate.ToString("dd MMM yyyy hh:mm tt")
+
+                        </small>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="alert alert-info">
+
+                    No Notifications Available.
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>

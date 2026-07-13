@@ -1,0 +1,166 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model AnilUniversity.Models.Course
+
+@{
+    ViewData["Title"] = "Add New Course";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-header bg-primary text-white rounded-top-4 py-3">
+
+                    <h3 class="mb-0 fw-bold">
+                        📚 Add New Course
+                    </h3>
+
+                    <small>
+                        Create a new course for student admissions
+                    </small>
+
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="CourseName" class="form-label fw-bold">
+                                    📖 Course Name
+                                </label>
+
+                                <input asp-for="CourseName"
+                                       class="form-control form-control-lg"
+                                       placeholder="Enter Course Name" />
+
+                                <span asp-validation-for="CourseName"
+                                      class="text-danger"></span>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Duration" class="form-label fw-bold">
+                                    ⏳ Duration
+                                </label>
+
+                                <input asp-for="Duration"
+                                       class="form-control form-control-lg"
+                                       placeholder="Example: 2 Years" />
+
+                                <span asp-validation-for="Duration"
+                                      class="text-danger"></span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Fees" class="form-label fw-bold">
+                                    💰 Course Fees
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">₹</span>
+
+                                    <input asp-for="Fees"
+                                           class="form-control form-control-lg"
+                                           placeholder="Enter Fees" />
+
+                                </div>
+
+                                <span asp-validation-for="Fees"
+                                      class="text-danger"></span>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="TotalSeats" class="form-label fw-bold">
+                                    👥 Total Seats
+                                </label>
+
+                                <input asp-for="TotalSeats"
+                                       class="form-control form-control-lg"
+                                       placeholder="Enter Total Seats" />
+
+                                <span asp-validation-for="TotalSeats"
+                                      class="text-danger"></span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label asp-for="Description"
+                                   class="form-label fw-bold">
+
+                                📝 Course Description
+
+                            </label>
+
+                            <textarea asp-for="Description"
+                                      rows="4"
+                                      class="form-control"
+                                      placeholder="Enter course description">
+                            </textarea>
+
+                            <span asp-validation-for="Description"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary btn-lg">
+
+                                ⬅ Back
+
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg px-5">
+
+                                💾 Save Course
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

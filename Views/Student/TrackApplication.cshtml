@@ -1,0 +1,75 @@
+﻿@model AnilUniversity.Models.Student
+
+@{
+    ViewData["Title"] = "Track Application";
+}
+
+<h2>Track Admission Status</h2>
+
+<form asp-action="TrackApplication" method="post">
+
+    <div class="mb-3">
+
+        <label>Application Number</label>
+
+        <input type="text"
+               name="applicationNo"
+               class="form-control"
+               placeholder="Enter Application Number" />
+
+    </div>
+
+    <button class="btn btn-primary">
+        Track
+    </button>
+
+</form>
+
+<hr />
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Message
+    </div>
+}
+
+@if (Model != null)
+{
+
+    <table class="table table-bordered">
+
+        <tr>
+            <th>Application No</th>
+            <td>@Model.ApplicationNo</td>
+        </tr>
+
+        <tr>
+            <th>Name</th>
+            <td>@Model.FullName</td>
+        </tr>
+
+        <tr>
+            <th>Course</th>
+            <td>@Model.Course.CourseName</td>
+        </tr>
+
+        <tr>
+            <th>Status</th>
+            <td>@Model.Status</td>
+        </tr>
+
+        <tr>
+            <th>Remarks</th>
+            <td>@Model.Remarks</td>
+        </tr>
+
+    </table>
+
+    <a asp-action="Print"
+       asp-route-id="@Model.StudentId"
+       class="btn btn-success">
+        Print Admission Form
+    </a>
+
+}

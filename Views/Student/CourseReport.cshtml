@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Course Wise Report";
+}
+
+<h2>Course Wise Student Report</h2>
+
+<form asp-action="CourseReportResult" method="get">
+
+    <div class="mb-3">
+
+        <label>Select Course</label>
+
+        <select name="courseId"
+                asp-items="ViewBag.CourseId"
+                class="form-select">
+
+            <option value="">-- Select Course --</option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-primary">
+        Show Report
+    </button>
+
+</form>

@@ -1,0 +1,110 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<AnilUniversity.Models.Course>
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+
+<div class="container mt-5">
+
+    <h2 class="text-center text-primary fw-bold mb-4">
+        🎓 Our Courses
+    </h2>
+
+
+    <div class="row g-4">
+
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-4">
+
+
+                <div class="card shadow border-0 rounded-4 h-100">
+
+
+                    <div class="card-body text-center">
+
+
+                        <div style="font-size:50px;">
+                            🎓
+                        </div>
+
+
+                        <h4 class="fw-bold mt-3">
+                            @item.CourseName
+                        </h4>
+
+
+                        <p>
+                            ⏳ @item.Duration
+                        </p>
+
+
+                        <h5 class="text-success">
+                            ₹ @item.Fees
+                        </h5>
+
+
+                        <p class="text-muted">
+                            @item.Description
+                        </p>
+
+
+                        <span class="badge bg-primary">
+                            Seats Available: @item.AvailableSeats
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div class="card-footer bg-white border-0 text-center">
+
+
+                        @if (item.AvailableSeats > 0)
+                        {
+
+                            <a asp-controller="Student"
+                               asp-action="Register"
+                               asp-route-courseId="@item.CourseId"
+                               class="btn btn-success">
+
+                                Apply Now
+
+                            </a>
+
+                        }
+                        else
+                        {
+
+                            <button class="btn btn-danger" disabled>
+
+                                Admission Closed
+
+                            </button>
+
+                        }
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        }
+
+
+    </div>
+
+
+</div>

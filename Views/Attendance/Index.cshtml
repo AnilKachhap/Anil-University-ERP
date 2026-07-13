@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model IEnumerable<AnilUniversity.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Attendance";
+}
+
+<h2>Attendance List</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<p>
+    <a asp-action="MarkAttendance" class="btn btn-primary">
+        Mark Class Attendance
+    </a>
+</p>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+        <tr>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Student.FullName</td>
+
+                <td>@item.AttendanceDate.ToString("dd-MMM-yyyy")</td>
+
+                <td>
+
+                    @if (item.Status == "Present")
+                    {
+                        <span class="badge bg-success">
+                            Present
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">
+                            Absent
+                        </span>
+                    }
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

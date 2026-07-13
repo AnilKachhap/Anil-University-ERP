@@ -1,0 +1,195 @@
+﻿@model AnilUniversity.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h2>Student Details</h2>
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-3 text-center">
+
+                @if (Model.StudentDocument != null)
+                {
+                    <img src="@Model.StudentDocument.PhotoPath"
+                         width="180"
+                         class="img-thumbnail" />
+                }
+
+            </div>
+
+            <div class="col-md-9">
+
+                <table class="table table-bordered">
+
+                    <tr>
+                        <th>Application No</th>
+                        <td>@Model.ApplicationNo</td>
+                    </tr>
+
+                    <tr>
+                        <th>Name</th>
+                        <td>@Model.FullName</td>
+                    </tr>
+
+                    <tr>
+                        <th>Father Name</th>
+                        <td>@Model.FatherName</td>
+                    </tr>
+
+                    <tr>
+                        <th>Mother Name</th>
+                        <td>@Model.MotherName</td>
+                    </tr>
+
+                    <tr>
+                        <th>DOB</th>
+                        <td>@Model.DOB.ToString("dd-MM-yyyy")</td>
+                    </tr>
+
+                    <tr>
+                        <th>Gender</th>
+                        <td>@Model.Gender</td>
+                    </tr>
+
+                    <tr>
+                        <th>Course</th>
+                        <td>@Model.Course?.CourseName</td>
+                    </tr>
+
+                    <tr>
+                        <th>Mobile</th>
+                        <td>@Model.Mobile</td>
+                    </tr>
+
+                    <tr>
+                        <th>Email</th>
+                        <td>@Model.Email</td>
+                    </tr>
+
+                    <tr>
+                        <th>Address</th>
+                        <td>@Model.Address</td>
+                    </tr>
+
+                    <tr>
+                        <th>Status</th>
+                        <td>@Model.Status</td>
+                    </tr>
+
+                    <tr>
+                        <th>Remarks</th>
+                        <td>@Model.Remarks</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <hr />
+
+        <h4>Uploaded Documents</h4>
+
+        <table class="table table-bordered">
+
+            <tr>
+                <th>Signature</th>
+                <td>
+                    @if (Model.StudentDocument != null)
+                    {
+                        <img src="@Model.StudentDocument.SignaturePath"
+                             width="180"
+                             class="img-thumbnail" />
+                    }
+                </td>
+            </tr>
+
+            <tr>
+                <th>Aadhaar</th>
+                <td>
+                    @if (Model.StudentDocument != null)
+                    {
+                        <a href="@Model.StudentDocument.AadhaarPath"
+                           target="_blank"
+                           class="btn btn-primary">
+                            View Aadhaar
+                        </a>
+                    }
+                </td>
+            </tr>
+
+            <tr>
+                <th>10th Marksheet</th>
+                <td>
+                    @if (Model.StudentDocument != null)
+                    {
+                        <a href="@Model.StudentDocument.TenthMarksheetPath"
+                           target="_blank"
+                           class="btn btn-success">
+                            View
+                        </a>
+                    }
+                </td>
+            </tr>
+
+            <tr>
+                <th>12th Marksheet</th>
+                <td>
+                    @if (Model.StudentDocument != null)
+                    {
+                        <a href="@Model.StudentDocument.TwelfthMarksheetPath"
+                           target="_blank"
+                           class="btn btn-success">
+                            View
+                        </a>
+                    }
+                </td>
+            </tr>
+
+            @if (!string.IsNullOrEmpty(Model.StudentDocument?.GraduationMarksheetPath))
+            {
+                <tr>
+                    <th>Graduation Marksheet</th>
+                    <td>
+                        <a href="@Model.StudentDocument.GraduationMarksheetPath"
+                           target="_blank"
+                           class="btn btn-success">
+                            View
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <a asp-action="Print"
+           asp-route-id="@Model.StudentId"
+           class="btn btn-primary">
+            Print
+        </a>
+
+        <a asp-action="DownloadPdf"
+           asp-route-id="@Model.StudentId"
+           class="btn btn-danger">
+            Download PDF
+        </a>
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.StudentId"
+           class="btn btn-warning">
+            Edit
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Back
+        </a>
+
+    </div>
+</div>

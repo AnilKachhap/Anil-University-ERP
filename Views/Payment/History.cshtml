@@ -1,0 +1,68 @@
+﻿
+@model IEnumerable<AnilUniversity.Models.StudentPayment>
+
+@{
+    var student = ViewBag.Student as AnilUniversity.Models.Student;
+}
+
+<h2>Payment History</h2>
+
+<h4>@student.FullName</h4>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+
+        <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Mode</th>
+            <th>Status</th>
+            <th>Transaction Id</th>
+            <th>Receipt</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.PaymentDate.ToString("dd-MM-yyyy")</td>
+
+                <td>₹ @item.Amount</td>
+
+                <td>@item.PaymentMode</td>
+
+                <td>@item.PaymentStatus</td>
+
+                <td>@item.TransactionId</td>
+
+                <td>
+
+                    <a asp-action="Receipt"
+                       asp-route-id="@item.PaymentId"
+                       class="btn btn-success btn-sm">
+
+                        Receipt
+
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<a asp-controller="Student"
+   asp-action="Index"
+   class="btn btn-secondary">
+
+    Back
+
+</a>

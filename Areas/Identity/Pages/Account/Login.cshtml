@@ -1,0 +1,145 @@
+@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-header bg-primary text-white text-center rounded-top-4 py-4">
+
+                    <h2 class="fw-bold">
+                        🎓 Anil University
+                    </h2>
+
+                    <p class="mb-0">
+                        Online Admission Portal
+                    </p>
+
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form id="account" method="post">
+
+                        <h4 class="text-center mb-4">
+                            Login Account
+                        </h4>
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="form-floating mb-3">
+
+                            <input asp-for="Input.Email"
+                                   class="form-control"
+                                   autocomplete="username"
+                                   placeholder="Email" />
+
+                            <label asp-for="Input.Email">
+                                📧 Email
+                            </label>
+
+                            <span asp-validation-for="Input.Email"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="form-floating mb-3">
+
+                            <input asp-for="Input.Password"
+                                   class="form-control"
+                                   autocomplete="current-password"
+                                   placeholder="Password" />
+
+                            <label asp-for="Input.Password">
+                                🔒 Password
+                            </label>
+
+                            <span asp-validation-for="Input.Password"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="form-check mb-3">
+
+                            <input class="form-check-input"
+                                   asp-for="Input.RememberMe" />
+
+                            <label class="form-check-label">
+                                Remember Me
+                            </label>
+
+                        </div>
+
+                        <button id="login-submit"
+                                type="submit"
+                                class="btn btn-primary btn-lg w-100 shadow">
+
+                            Login
+
+                        </button>
+                        <hr />
+
+                        <div class="text-center">
+
+                            <p class="text-muted">
+
+                                Don't have an account?
+
+                            </p>
+
+                            <a asp-controller="Student"
+                               asp-action="Register"
+                               class="btn btn-success">
+
+                                Apply For Admission
+
+                            </a>
+
+                        </div>
+
+                        <div class="text-center mt-4">
+
+                            <a asp-page="./ForgotPassword">
+                                Forgot Password?
+                            </a>
+
+                            <hr />
+
+                            <small class="text-muted">
+
+                                Student account is created only after
+                                <b>Admission Approval</b> by the University.
+
+                            </small>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

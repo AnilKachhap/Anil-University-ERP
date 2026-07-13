@@ -1,0 +1,165 @@
+﻿
+@model AnilUniversity.Models.StudentPayment
+
+@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["Title"] = "Fee Receipt";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white text-center">
+
+           
+
+            <h2 class="mb-0">ANIL UNIVERSITY</h2>
+            <h5>FEE PAYMENT RECEIPT</h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered">
+
+                <tr class="table-light">
+                    <th>Receipt No</th>
+                    <td><strong>REC-@Model.PaymentId</strong></td>
+
+                    <th>Date</th>
+                    <td>@Model.PaymentDate.ToString("dd-MMM-yyyy hh:mm tt")</td>
+                </tr>
+
+                <tr>
+                    <th>Student Name</th>
+                    <td>@Model.Student.FullName</td>
+
+                    <th>Application No</th>
+                    <td>@Model.Student.ApplicationNo</td>
+                </tr>
+
+                <tr>
+                    <th>Course</th>
+                    <td>@Model.Student.Course.CourseName</td>
+
+                    <th>Payment Mode</th>
+                    <td>@Model.PaymentMode</td>
+                </tr>
+
+                <tr>
+                    <th>Amount Paid</th>
+                    <td class="text-success fw-bold fs-4">
+                        ₹ @Model.Amount
+                    </td>
+
+                    <th>Status</th>
+                    <td>
+
+                        @if (Model.PaymentStatus == "Paid")
+                        {
+                            <span class="badge bg-success fs-6">
+                                Paid
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger fs-6">
+                                Failed
+                            </span>
+                        }
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Transaction ID</th>
+                    <td colspan="3">
+                        @Model.TransactionId
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Payment Gateway</th>
+                    <td>Razorpay</td>
+
+                    <th>Payment ID</th>
+                    <td>@Model.RazorpayPaymentId</td>
+                </tr>
+
+                <tr>
+                    <th>Order ID</th>
+                    <td colspan="3">
+                        @Model.RazorpayOrderId
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Remarks</th>
+                    <td colspan="3">
+                        @(string.IsNullOrEmpty(Model.Remarks)
+                            ? "Admission Fee Payment"
+                            : Model.Remarks)
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="row mt-5">
+
+                <div class="col-md-6">
+
+                    <small class="text-muted">
+
+                        This is a computer generated receipt.
+
+                    </small>
+
+                </div>
+
+                <div class="col-md-6 text-end">
+
+                    <strong>Authorized Signature</strong>
+
+                    <br />
+                    <br />
+                    ______________________
+
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="text-center">
+
+                <button onclick="window.print()"
+                        class="btn btn-primary">
+
+                    <i class="bi bi-printer"></i>
+                    Print Receipt
+
+                </button>
+
+                <a asp-action="DownloadReceiptPdf"
+                   asp-route-id="@Model.PaymentId"
+                   class="btn btn-danger">
+
+                    Download PDF
+
+                </a>
+
+                <a asp-controller="StudentPortal"
+                   asp-action="MyPayments"
+                   class="btn btn-secondary">
+
+                    Back
+
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

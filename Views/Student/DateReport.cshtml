@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Date Wise Report";
+}
+
+<h2>Date Wise Student Report</h2>
+
+<form asp-action="DateReportResult" method="get">
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <label>From Date</label>
+
+            <input type="date"
+                   name="fromDate"
+                   class="form-control" />
+
+        </div>
+
+        <div class="col-md-4">
+
+            <label>To Date</label>
+
+            <input type="date"
+                   name="toDate"
+                   class="form-control" />
+
+        </div>
+
+        <div class="col-md-4 mt-4">
+
+            <button class="btn btn-primary">
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+</form>
